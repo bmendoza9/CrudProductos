@@ -9,9 +9,9 @@ const productsReducer = (state = {}, action) => {
 
         case 'ADD_PRODUCT':
             const newState = { ...state }
-            newState.products.push(action.payload)
-            console.log('added product!', action.payload)
-            return newState
+            newState.products.push(action.product)
+            console.log('added product!', action.product)
+            return newState;
 
 
         default:
