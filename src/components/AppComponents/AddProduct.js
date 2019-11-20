@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import Swal from 'sweetalert2';
+//import Swal from 'sweetalert2';
 import { createProduct } from '../store/actions/productsActions';
 
 class AddProduct extends Component {
@@ -25,6 +25,7 @@ class AddProduct extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createProduct(this.state);
+    this.props.history.push('/productos');
   }
 
   render() {
