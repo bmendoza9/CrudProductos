@@ -9,20 +9,25 @@ class AddProduct extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    product: ''
+    name: '',
+    brand: '',
+    description: '',
+    price: '',
+    imgUrl: ''
     }
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = (e) => {
+  handleChange(e){
     this.setState({
       [e.target.name]: e.target.value
     })
   }
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.UpdateProduct(this.state, this.props.params.id);
+    this.props.updateProduct(this.state, this.props.match.params.id);
     this.props.history.push('/productos');
   }
   componentDidMount(){
@@ -31,14 +36,14 @@ class AddProduct extends Component {
    }
    componentDidUpdate(prevProps) {
     if (this.props.getAProductData !== prevProps.getAProductData) {
-      const product = this.props.getAProductData.data
-      this.setState({product: product.product})
+      const product = this.props.getAProductData.data;
+      this.setState(product);
+
     }
   }
 
   render() {
-    console.log(this.state);
-    console.log(this.props);
+    console.log(this.props)
     return (
       <div className="col-md-8 mx-auto ">
         <h1 className="text-center">Editar Producto</h1>
@@ -50,7 +55,7 @@ class AddProduct extends Component {
               className="form-control"
               name="name"
               placeholder="Nombre Prodcuto"
-              value={this.state.product.name}
+              value={this.state.name}
               onChange={this.handleChange}
             />
           </div>
@@ -61,7 +66,7 @@ class AddProduct extends Component {
               className="form-control"
               name="brand"
               placeholder="Marca de Prodcuto"
-              value={this.state.product.brand}
+              value={this.state.brand}
               onChange={this.handleChange}
             />
           </div>
@@ -72,7 +77,7 @@ class AddProduct extends Component {
               className="form-control"
               name="description"
               placeholder="Descripcion del producto"
-              value={this.state.product.description}
+              value={this.state.description}
               onChange={this.handleChange}
             />
           </div>
@@ -83,7 +88,7 @@ class AddProduct extends Component {
               className="form-control"
               name="price"
               placeholder="Precio Prodcuto"
-              value={this.state.product.price}
+              value={this.state.price}
               onChange={this.handleChange}
             />
           </div>
@@ -94,7 +99,7 @@ class AddProduct extends Component {
               className="form-control"
               name="imgUrl"
               placeholder="URL de imagen de producto"
-              value={this.state.product.imgUrl}
+              value={this.state.imgUrl}
               onChange={this.handleChange}
             />
           </div>
@@ -118,7 +123,7 @@ const mapDispatchToProps = (dispatch) => {
 }
 const mapStateToProps = (state) => {
   return {
-    getAProductData: state.getAProductData
+    getAProductData: state.getProduct
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(AddProduct)

@@ -43,7 +43,7 @@ function Product(props) {
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteProduct: (id) => { dispatch(deleteProduct(id)) },
-    getAProduct: (id) => {dispatch(getAProduct(id))}
+    getAProduct: (id) => { dispatch(getAProduct(id)) }
   }
 }
 

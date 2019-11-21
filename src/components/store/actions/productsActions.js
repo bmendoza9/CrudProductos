@@ -48,7 +48,8 @@ export const getAProduct = (ProductID) => {
         firestore.collection('products').doc(ProductID).get().then((doc) => {
             if (doc.exists) {
                 const data = doc.data()
-                dispatch({ type: 'GET_A_PRODUCT', data })
+                //console.log(data);
+                dispatch({ type: 'GET_PRODUCT', data })
             } else {
                 console.log('No existe dicho producto')
             }
