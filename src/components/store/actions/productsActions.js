@@ -63,6 +63,18 @@ export const updateProduct = (updatedProduct, id) => {
         const firestore = getFirestore()
         firestore.collection('products').doc(id).update({
             ...updatedProduct
-        });
+        }).then(() => {
+            Swal.fire(
+                'Producto actualizado',
+                'Se han actualizado los datos del producto!',
+                'success'
+            )
+        }).catch(err => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se han podido actualizar los datos del producto...',
+            });
+        })
     }
 }

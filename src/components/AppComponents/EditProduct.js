@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 //import Swal from "sweetalert2";
-import { withRouter } from "react-router-dom";
 import { getAProduct, updateProduct } from '../store/actions/productsActions';
 
 class AddProduct extends Component {
@@ -43,7 +42,6 @@ class AddProduct extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className="col-md-8 mx-auto ">
         <h1 className="text-center">Editar Producto</h1>
